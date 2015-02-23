@@ -11,6 +11,7 @@ namespace Application;
 
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
+use Zend\View\Model\ViewModel;
 
 class Module
 {
@@ -19,6 +20,7 @@ class Module
         $eventManager        = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
+        $eventManager->attach(MvcEvent::EVENT_DISPATCH, array($this, 'onDispatch') , 100);
     }
 
     public function getConfig()
@@ -36,4 +38,10 @@ class Module
             ),
         );
     }
+    public function onDispatch(MvcEvent $e)
+    {
+        $viewModel = $e->getViewModel();
+        $viewModel->setVariable('categories', "CATEGORY LIST");
+        
+    }   
 }
