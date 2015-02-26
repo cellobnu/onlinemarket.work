@@ -38,10 +38,22 @@ class Module
             ),
         );
     }
+
+//    public function getServiceConfig(){
+//        return array(
+//            'invokables' => array(
+//                'ExemploService' => 'Application\Service\ExemploService'
+//            ),
+//        );
+//    }
+//    
     public function onDispatch(MvcEvent $e)
     {
         $viewModel = $e->getViewModel();
-        $viewModel->setVariable('categories', "CATEGORY LIST");
+        $serviceCategories =  $e->getApplication()->getServiceManager()->get('categories');
+        //print_r($serviceCategories);
+        
+        $viewModel->setVariable('categories', $serviceCategories);
         
     }   
 }
