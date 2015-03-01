@@ -1,3 +1,9 @@
 <strong>Module:</strong>        Market &raquo;
 <strong>Controller:</strong>    Index &raquo;
 <strong>Action:</strong>        index
+
+<?php  if(isset($this->msg) && count($this->msg)):?>
+<span style="color:red;">
+    <?php echo $this->htmlList($this->msg); ?>
+</span>
+<?php endif; ?>
