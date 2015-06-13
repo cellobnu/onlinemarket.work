@@ -1,18 +1,6 @@
 <?php
 
-return array(
-    'controllers' => array(
-        'invokables' => array(
-            'market-index-controller' => 'Market\Controller\IndexController',
-            'market-view-controller' => 'Market\Controller\ViewController',
-        ),
-        'factories' => array(
-            'market-post-controller' => 'Market\Factory\PostControllerFactory',
-        ),
-        'aliases' => array(
-            'alt' => 'market-view-controller',
-        ),
-    ),
+return array(   
     'router' => array(
         'routes' => array(
             'home' => array(
@@ -82,6 +70,26 @@ return array(
                     ),
                 ),
             ),
+        ),
+    ),
+    
+    'controllers' => array(
+        'invokables' => array(
+            'market-index-controller' => 'Market\Controller\IndexController',
+            'market-view-controller' => 'Market\Controller\ViewController',
+        ),
+        'factories' => array(
+            'market-post-controller' => 'Market\Factory\PostControllerFactory',
+
+        ),
+        'aliases' => array(
+            'alt' => 'market-view-controller',
+        ),
+    ),
+    
+    'service_manager' => array(
+        'factories' => array(
+            'market-post-form'       => 'Market\Factory\PostFormFactory',
         ),
     ),
     'view_manager' => array(
