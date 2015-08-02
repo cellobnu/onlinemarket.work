@@ -1,9 +1,9 @@
 <?php
 namespace Market\Factory;
 
+use Market\Form\PostFilter;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
-use Market\Form\PostFilter;
 
 class PostFilterFactory implements FactoryInterface
 {
@@ -11,6 +11,7 @@ class PostFilterFactory implements FactoryInterface
     {
         $filter = new PostFilter();
         $filter->setCategories($sm->get('categories'));
+        $filter->setExpireDays($sm->get('market-expire-days'));
         $filter->buildFilter();
         return $filter;
     }

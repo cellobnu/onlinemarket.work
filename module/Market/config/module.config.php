@@ -91,7 +91,7 @@ return array(
         'factories' => array(
             'market-post-form'       => 'Market\Factory\PostFormFactory',
             'market-post-filter'     => 'Market\Factory\PostFilterFactory',
-        ),
+        )
     ),
     'view_manager' => array(
         'template_path_stack' => array(
